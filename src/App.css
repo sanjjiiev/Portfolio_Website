@@ -1,38 +1,54 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a:hover {
+  text-decoration: underline;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.section {
+  margin-bottom: 2rem;
+}
+
+header {
+  padding: 2rem;
+  background: linear-gradient(135deg, #007bff, #6610f2);
   color: white;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-.App-link {
-  color: #61dafb;
+.bg-light {
+  background: linear-gradient(to right, #ffffff, #f8f9fa) !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bg-dark {
+  background: linear-gradient(to right, #000000, #000000) !important;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+h2 {
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+h5 {
+  margin-top: 1rem;
 }
