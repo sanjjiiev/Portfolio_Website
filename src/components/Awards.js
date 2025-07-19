@@ -1,48 +1,58 @@
+// Let's proceed step-by-step
+
+// 1. AWARDS SECTION (Flip Card Style)
+// File: components/Awards.js
 import React from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
+import './Awards.css';
 import { FaAward, FaTrophy } from 'react-icons/fa';
 
-function Awards({ darkMode }) {
-  const awards = [
-    {
-      title: "Finalist – Uyir Hackathon",
-      desc: "Selected as finalist for developing an AI-powered SOS System for autonomous vehicles.",
-      link: "https://github.com/sanjjiiev/Smart-Sheild",
-      icon: <FaTrophy />
-    },
-    {
-      title: "Swachhata Hi Seva",
-      desc: "Recognized for active participation in the National Service Scheme (NSS) camp.",
-      link: "https://github.com/sanjjiiev/Awards/blob/main/swachhata_hi_seva.pdf",
-      icon: <FaAward />
-    },
-  ];
+const awards = [
+  {
+    title: 'Finalist – Uyir Hackathon',
+    desc: 'Selected as finalist for developing an AI-powered SOS System for autonomous vehicles.',
+    year: '2024',
+    icon: <FaTrophy />,
+    link: 'https://github.com/sanjjiiev/Smart-Sheild'
+  },
+  {
+    title: 'Swachhata Hi Seva',
+    desc: 'Recognized for active participation in the National Service Scheme (NSS) camp.',
+    year: '2023',
+    icon: <FaAward />,
+    link: 'https://github.com/sanjjiiev/Awards/blob/main/swachhata_hi_seva.pdf'
+  }
+];
 
+function Awards({ darkMode }) {
   return (
-    <section className="mb-4">
-      <h2 className="mb-3">Awards</h2>
-      <Row xs={1} md={2} lg={3} className="g-4">
-        {awards.map((award, idx) => (
-          <Col key={idx}>
-            <Card className="h-100 shadow-sm text-white bg-dark">
-              <Card.Body>
-                <Card.Title className="d-flex align-items-center gap-2">
-                  {award.icon} {award.title}
-                </Card.Title>
-                <Card.Text>{award.desc}</Card.Text>
-                <a
-                  href={award.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={darkMode ? 'text-info' : 'text-primary'}
-                >
-                  View Award →
-                </a>
-              </Card.Body>
-            </Card>
-          </Col>
+    <section className="glass-card p-4 my-5">
+      <h2 className="text-center mb-4">Awards</h2>
+      <div className="row">
+        {awards.map((award, index) => (
+          <div className="col-md-4 mb-4" key={index}>
+            <div className="flip-card">
+              <div className="flip-card-inner">
+                <div className="flip-card-front text-center p-3">
+                  <h3>{award.icon}</h3>
+                  <h4>{award.title}</h4>
+                </div>
+                <div className="flip-card-back p-3">
+                  <p>{award.desc}</p>
+                  <p><strong>{award.year}</strong></p>
+                  <a
+                    href={award.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={darkMode ? 'text-info' : 'text-primary'}
+                  >
+                    View →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
-      </Row>
+      </div>
     </section>
   );
 }

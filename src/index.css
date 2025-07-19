@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.animated-cursor {
+  z-index: 9999 !important; /* Make sure it's above all elements */
+  pointer-events: none;      /* Ensure it doesn't block mouse clicks */
+}
+
+html {
+  scroll-behavior: smooth;
+}

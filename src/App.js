@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Header from './components/Header';
+import React, { useState} from 'react';
 import About from './components/About';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
@@ -9,21 +8,39 @@ import Contact from './components/Contact';
 import CustomNavbar from './components/navbar'; 
 import Hero from './components/Hero';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import './SectionStyles.css';
-
+import AnimatedCursor from "react-animated-cursor";
 
 import './App.css';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
   return (
     <div className={darkMode ? 'bg-dark text-white' : 'bg-light text-dark'}>
       <CustomNavbar onToggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-
-      <Header />
+        <AnimatedCursor
+  innerSize={8}
+  outerSize={35}
+  color='0, 172, 193'
+  outerAlpha={0.4}
+  innerScale={0.7}
+  outerScale={2}
+  clickables={[
+    'a',
+    'button',
+    'input',
+    'textarea',
+    '.link',
+    '.nav-link',     // Bootstrap or custom navbar links
+    '.navbar a',     // If using <a> inside navbar
+    '.navbar-brand',
+    '.menu-item'     // Add more custom classes if needed
+  ]}
+  />
       <Hero />
 
       <div className="container py-4">
@@ -95,6 +112,8 @@ function App() {
    Download Resume
   </a>
 </div>
+
+<ScrollToTop />
 
 
       </div>

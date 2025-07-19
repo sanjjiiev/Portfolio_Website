@@ -9,6 +9,8 @@ import {
   SiTensorflow, SiOpencv, SiPandas, SiNumpy, SiExpress, SiSqlite, SiWireshark
 } from 'react-icons/si';
 
+import './Skills.css'; // Optional external styles
+
 function Skills() {
   const skillCategories = {
     "Languages": [
@@ -80,14 +82,14 @@ function Skills() {
   };
 
   return (
-    <section className="mb-4">
-      <h2 className="mb-3">Skills</h2>
+    <section className="glass-card p-4 my-5">
+      <h2 className="text-center mb-4">Skills</h2>
       {Object.entries(skillCategories).map(([category, items]) => (
         <div key={category} className="mb-4">
-          <h5 className="mb-3">{category}</h5>
+          <h5 className="mb-3 text-primary">{category}</h5>
           <div className="row">
             {items.map((item, idx) => (
-              <div key={idx} className="col-md-4 d-flex align-items-center mb-2">
+              <div key={idx} className="col-md-4 d-flex align-items-center mb-2 skill-item">
                 <span style={{ fontSize: '1.5rem', marginRight: '10px' }}>{item.icon}</span>
                 <span>{item.name}</span>
               </div>

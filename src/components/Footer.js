@@ -4,10 +4,11 @@ function Footer() {
   return (
     <footer className="text-center py-4 bg-dark text-white mt-5">
       <p>© 2025 Sanjjiiev S • Built with React</p>
-      <div>
-        <a href="https://github.com/sanjjiiev" className="text-white me-3" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="mailto:sanjjiiev005@gmail.com" className="text-white" target="_blank" rel="noreferrer">Email</a>
-      </div>
+      <p>
+        <a href="mailto:sanjjiiev005@gmail.com" className="text-white">sanjjiiev005@gmail.com</a> | +91 9843065552
+      </p>
+      <p>Coimbatore, Tamil Nadu, India</p>
+      <a className="btn btn-outline-light mt-2" href="https://github.com/sanjjiiev" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
     </footer>
   );
 }

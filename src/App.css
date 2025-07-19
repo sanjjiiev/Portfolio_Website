@@ -3,8 +3,12 @@ body {
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
   transition: background 0.5s ease, color 0.5s ease;
-}
 
+}
+.animated-cursor {
+  z-index: 9999 !important; /* Make sure it's above all elements */
+  pointer-events: none;      /* Ensure it doesn't block mouse clicks */
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -20,7 +24,7 @@ a:hover {
 
 header {
   padding: 2rem;
-  background: linear-gradient(135deg, #007bff, #6610f2);
+  background: linear-gradient(135deg, #00acc1, #00acc1);
   color: white;
   border-radius: 1rem;
   text-align: center;
@@ -51,4 +55,14 @@ h2 {
 
 h5 {
   margin-top: 1rem;
+}
+.navbar {
+  z-index: 1000; /* default Bootstrap navbar value */
+  position: fixed; /* ensure it stays at top */
+  top: 0;
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
 }
