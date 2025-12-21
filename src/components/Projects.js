@@ -6,7 +6,7 @@ import { projects } from '../data';
 function Projects() {
   return (
     <section className="glass-card p-4 my-5">
-      <h2 className="text-center mb-4">Projects</h2>
+      <h2 className="text-center mb-4" data-text="Projects">Projects</h2>
       <div className="projects-grid">
         {projects.map((proj, index) => (
           <div className="flip-card" key={index}>

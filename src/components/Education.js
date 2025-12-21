@@ -4,7 +4,7 @@ import { personalData } from '../data';
 function Education() {
   return (
     <section className="mb-4">
-      <h2 className="mb-3">Education</h2>
+      <h2 className="mb-3" data-text="Education">Education</h2>
       {personalData.education.map((edu, index) => (
         <div key={index}>
           <h5>{edu.school}</h5>

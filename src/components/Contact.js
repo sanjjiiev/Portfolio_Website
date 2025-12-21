@@ -6,7 +6,7 @@ import { personalData } from '../data';
 function Contact() {
   return (
     <section id="contact" className="contact-section glass-card p-4 my-5">
-      <h2 className="text-center mb-4">Contact Me</h2>
+      <h2 className="text-center mb-4" data-text="Contact Me">Contact Me</h2>
 
       <div className="row justify-content-center">
         {/* Contact Info */}

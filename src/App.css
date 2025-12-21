@@ -94,6 +94,12 @@ h2 {
   margin-bottom: 1rem;
 }
 
+/* For glitch effect */
+[data-text] {
+  display: inline-block;
+  position: relative;
+}
+
 .bg-dark h2 {
   border-bottom: 2px solid var(--dark-accent);
 }
@@ -146,3 +152,87 @@ footer {
 
 .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6 { color: var(--dark-heading); }
 .bg-light h1, .bg-light h2, .bg-light h3, .bg-light h4, .bg-light h5, .bg-light h6 { color: var(--light-heading); }
+
+/* --- GLITCH EFFECT --- */
+[data-text]::before,
+[data-text]::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bg-dark [data-text]::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--dark-accent);
+  animation: glitch-1 2s infinite linear alternate-reverse;
+}
+
+.bg-dark [data-text]::after {
+  left: -2px;
+  text-shadow: -2px 0 #ff00c1, 2px 2px var(--dark-accent); /* A magenta for contrast */
+  animation: glitch-2 2s infinite linear alternate-reverse;
+}
+
+.bg-light [data-text]::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--light-accent);
+  animation: glitch-1 2s infinite linear alternate-reverse;
+}
+
+.bg-light [data-text]::after {
+  left: -2px;
+  text-shadow: -2px 0 #ff00c1, 2px 2px var(--light-accent);
+  animation: glitch-2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-1 {
+  0% { clip-path: inset(15% 0 86% 0); }
+  5% { clip-path: inset(59% 0 1% 0); }
+  10% { clip-path: inset(9% 0 33% 0); }
+  15% { clip-path: inset(86% 0 10% 0); }
+  20% { clip-path: inset(41% 0 55% 0); }
+  25% { clip-path: inset(23% 0 1% 0); }
+  30% { clip-path: inset(7% 0 88% 0); }
+  35% { clip-path: inset(43% 0 51% 0); }
+  40% { clip-path: inset(9% 0 3% 0); }
+  45% { clip-path: inset(71% 0 2% 0); }
+  50% { clip-path: inset(34% 0 57% 0); }
+  55% { clip-path: inset(1% 0 94% 0); }
+  60% { clip-path: inset(60% 0 3% 0); }
+  65% { clip-path: inset(91% 0 8% 0); }
+  70% { clip-path: inset(21% 0 78% 0); }
+  75% { clip-path: inset(97% 0 2% 0); }
+  80% { clip-path: inset(33% 0 62% 0); }
+  85% { clip-path: inset(100% 0 0% 0); }
+  90% { clip-path: inset(45% 0 50% 0); }
+  95% { clip-path: inset(12% 0 81% 0); }
+  100% { clip-path: inset(83% 0 1% 0); }
+}
+
+@keyframes glitch-2 {
+  0% { clip-path: inset(74% 0 23% 0); }
+  5% { clip-path: inset(41% 0 3% 0); }
+  10% { clip-path: inset(94% 0 2% 0); }
+  15% { clip-path: inset(3% 0 91% 0); }
+  20% { clip-path: inset(56% 0 43% 0); }
+  25% { clip-path: inset(3% 0 26% 0); }
+  30% { clip-path: inset(67% 0 30% 0); }
+  35% { clip-path: inset(100% 0 0% 0); }
+  40% { clip-path: inset(45% 0 50% 0); }
+  45% { clip-path: inset(12% 0 81% 0); }
+  50% { clip-path: inset(83% 0 1% 0); }
+  55% { clip-path: inset(45% 0 56% 0); }
+  60% { clip-path: inset(59% 0 1% 0); }
+  65% { clip-path: inset(9% 0 33% 0); }
+  70% { clip-path: inset(86% 0 10% 0); }
+  75% { clip-path: inset(41% 0 55% 0); }
+  80% { clip-path: inset(23% 0 1% 0); }
+  85% { clip-path: inset(7% 0 88% 0); }
+  90% { clip-path: inset(43% 0 51% 0); }
+  95% { clip-path: inset(9% 0 3% 0); }
+  100% { clip-path: inset(71% 0 2% 0); }
+}

@@ -38,13 +38,27 @@
   max-height: 500px; /* A large enough value to show all content */
 }
 .skill-item {
-  transition: transform 0.2s ease, background 0.3s ease;
+  transition: background 0.3s ease;
   padding: 0.4rem 0.6rem;
   border-radius: 8px;
   cursor: default;
 }
 
 .skill-item:hover {
-  transform: scale(1.05);
-  background: rgba(255, 255, 255, 0.05); /* Light glow effect */
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.skill-item span:first-child {
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1.5), color 0.3s ease;
+}
+
+.skill-item:hover span:first-child {
+  transform: translateY(-4px) scale(1.1);
+}
+
+.bg-dark .skill-item:hover span:first-child {
+  color: var(--dark-accent);
+}
+.bg-light .skill-item:hover span:first-child {
+  color: var(--light-accent);
 }

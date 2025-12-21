@@ -6,7 +6,7 @@ import { awards } from '../data';
 function Awards({ darkMode }) {
   return (
     <section className="glass-card p-4 my-5">
-      <h2 className="text-center mb-4">Awards</h2>
+      <h2 className="text-center mb-4" data-text="Awards">Awards</h2>
       <div className="row">
         {awards.map((award, index) => (
           <div className="col-md-4 mb-4" key={index}>

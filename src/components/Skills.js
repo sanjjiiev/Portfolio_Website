@@ -15,7 +15,7 @@ function Skills() {
 
   return (
     <section className="glass-card p-4 my-5" onMouseLeave={handleMouseLeave}>
-      <h2 className="text-center mb-4">Skills</h2>
+      <h2 className="text-center mb-4" data-text="Skills">Skills</h2>
       {Object.entries(skills).map(([category, items]) => (
         <div key={category} className="skill-category" onMouseEnter={() => handleMouseEnter(category)}>
           <h5 className="mb-1 skill-category-title">{category}</h5>
