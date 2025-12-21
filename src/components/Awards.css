@@ -44,7 +44,6 @@
   padding: 1rem;
 }
 
-/* Responsive adjustments (optional) */
 @media (max-width: 768px) {
   .flip-card {
     height: 200px;

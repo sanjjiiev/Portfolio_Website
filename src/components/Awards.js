@@ -1,27 +1,7 @@
-// Let's proceed step-by-step
 
-// 1. AWARDS SECTION (Flip Card Style)
-// File: components/Awards.js
 import React from 'react';
 import './Awards.css';
-import { FaAward, FaTrophy } from 'react-icons/fa';
-
-const awards = [
-  {
-    title: 'Finalist – Uyir Hackathon',
-    desc: 'Selected as finalist for developing an AI-powered SOS System for autonomous vehicles.',
-    year: '2024',
-    icon: <FaTrophy />,
-    link: 'https://github.com/sanjjiiev/Smart-Sheild'
-  },
-  {
-    title: 'Swachhata Hi Seva',
-    desc: 'Recognized for active participation in the National Service Scheme (NSS) camp.',
-    year: '2023',
-    icon: <FaAward />,
-    link: 'https://github.com/sanjjiiev/Awards/blob/main/swachhata_hi_seva.pdf'
-  }
-];
+import { awards } from '../data';
 
 function Awards({ darkMode }) {
   return (

@@ -1,0 +1,19 @@
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem; /* Makes the icon larger */
+  padding: 0.2rem 0.5rem;
+  line-height: 1;
+  color: inherit; /* Inherit color from navbar text */
+  cursor: pointer;
+}
+
+/* Remove the focus outline from Bootstrap's .btn class */
+.theme-toggle-btn:focus {
+  box-shadow: none;
+}
+
+/* Optional: add a subtle effect on hover */
+.theme-toggle-btn:hover {
+  opacity: 0.8;
+}
