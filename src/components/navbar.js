@@ -21,7 +21,7 @@ function CustomNavbar({ onToggleDarkMode, darkMode }) {
       className="shadow-sm sticky-top px-3"
     >
       <Container fluid>
-        <Navbar.Brand href="/" className="fw-bold">
+        <Navbar.Brand href="https://github.com/sanjjiiev" className="fw-bold">
           {personalData.name}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
