@@ -6,16 +6,6 @@
 .contact-info li {
   margin-bottom: 10px;
   font-size: 1rem;
-  color: #ddd;
-}
-
-.contact-info a {
-  color: #00d1ff;
-  text-decoration: none;
-}
-
-.contact-info a:hover {
-  text-decoration: underline;
 }
 
 .contact-form input,

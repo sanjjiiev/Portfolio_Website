@@ -1,17 +1,31 @@
+/* --- THEME COLORS --- */
+:root {
+  --dark-bg: #121212;
+  --dark-text: #E0E0E0;
+  --dark-heading: #FFFFFF;
+  --dark-accent: #00d1ff;
+  --dark-accent-hover: #80e9ff;
+
+  --light-bg: #f8f9fa;
+  --light-text: #212529;
+  --light-heading: #000000;
+  --light-accent: #007B8A;
+  --light-accent-hover: #005f6b;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Source Code Pro', monospace;
   transition: background 0.5s ease, color 0.5s ease;
-
 }
 .animated-cursor {
   z-index: 9999 !important; 
   pointer-events: none;      
 }
 a {
-  color: inherit;
   text-decoration: none;
+  transition: color 0.2s ease-in-out;
 }
 
 a:hover {
@@ -37,7 +51,15 @@ header {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: #000;
+  color: var(--light-text);
+}
+
+.bg-light a {
+  color: var(--light-accent);
+}
+
+.bg-light a:hover {
+  color: var(--light-accent-hover);
 }
 
 .bg-dark {
@@ -47,7 +69,15 @@ header {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: #fff;
+  color: var(--dark-text);
+}
+
+.bg-dark a {
+  color: var(--dark-accent);
+}
+
+.bg-dark a:hover {
+  color: var(--dark-accent-hover);
 }
 
 
@@ -60,9 +90,22 @@ header {
 }
 
 h2 {
-  border-bottom: 2px solid rgba(0,0,0,0.1);
   padding-bottom: 0.3rem;
   margin-bottom: 1rem;
+}
+
+.bg-dark h2 {
+  border-bottom: 2px solid var(--dark-accent);
+}
+
+.bg-light h2 {
+  border-bottom: 2px solid var(--light-accent);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 h5 {
@@ -85,12 +128,12 @@ footer {
   background-position: center;
   background-attachment: fixed;
   padding: 2rem;
+  color: inherit;
 }
 
 .bg-dark footer {
   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
     url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1350&q=80');
-  color: white;
 }
 
 .bg-light footer {
@@ -99,5 +142,7 @@ footer {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: black;
 }
+
+.bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6 { color: var(--dark-heading); }
+.bg-light h1, .bg-light h2, .bg-light h3, .bg-light h4, .bg-light h5, .bg-light h6 { color: var(--light-heading); }

@@ -60,7 +60,7 @@ function App() {
             <Projects />
           </Section>
 
-          <Section id="skills" bgImage="/skills_bg.jpg" aosAnimation="fade-left">
+          <Section id="skills" bgImage="/retro_skills_bg.jpg" aosAnimation="fade-left">
             <Skills />
           </Section>
 

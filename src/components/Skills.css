@@ -3,12 +3,40 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   padding: 2rem;
-  color: white;
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
 
+.skill-category-title {
+  cursor: pointer; /* Indicates it's interactive */
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.bg-dark .skill-category-title {
+  color: var(--dark-accent);
+}
+
+.bg-light .skill-category-title {
+  color: var(--light-accent);
+}
+
+.skill-category:hover .skill-category-title {
+  background-color: rgba(0, 172, 193, 0.1); /* Highlight on hover */
+}
+
+.skill-items-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.skill-items-container.open {
+  max-height: 500px; /* A large enough value to show all content */
+}
 .skill-item {
   transition: transform 0.2s ease, background 0.3s ease;
   padding: 0.4rem 0.6rem;
