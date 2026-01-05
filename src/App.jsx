@@ -1,25 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Terminal, Layers, ChevronRight, Cpu, Globe, ExternalLink } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPython, FaJava, FaReact, FaNodeJs, FaLinux, FaGitAlt, FaRaspberryPi, FaFigma, FaAward, FaTrophy } from 'react-icons/fa';
-import { SiCplusplus, SiExpress, SiFlutter, SiPytorch, SiPandas, SiOpencv, SiTensorflow, SiMysql, SiMongodb, SiFirebase } from 'react-icons/si';
+import { SiC, SiExpress, SiFlutter, SiPytorch, SiPandas, SiOpencv, SiTensorflow, SiMysql, SiMongodb, SiFirebase } from 'react-icons/si';
 
 const Portfolio = () => {
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [input, setInput] = useState('');
   const [output, setOutput] = useState([
     '> SYSTEM INITIALIZED...', 
-    '> USER: SANJJIIEV DETECTED.',
     '> TYPE "HELP" FOR COMMANDS.'
   ]);
-  const bottomRef = useRef(null);
+  
+  // FIX: Ref is now attached to the container, not a bottom element
+  const terminalBodyRef = useRef(null);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date().toLocaleTimeString()), 1000);
     return () => clearInterval(timer);
   }, []);
 
+  // FIX: Manually scroll the container to the bottom prevents page jumping
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalBodyRef.current) {
+      terminalBodyRef.current.scrollTop = terminalBodyRef.current.scrollHeight;
+    }
   }, [output]);
 
   const handleCommand = (e) => {
@@ -43,50 +47,50 @@ const Portfolio = () => {
 
   // --- DATA ---
   const profile = {
-    name: "Sanjjiiev S",
+    name: "Sanjjiiev S", // [cite: 1]
     role: "Computer Science Engineer",
-    desc: "Motivated B.Tech CSE student (2023-2027) with a CGPA of 7.63. Experienced in building full-stack web applications, AI/ML models, and embedded systems.",
-    location: "Coimbatore, India",
-    email: "sanjjiiev005@gmail.com",
-    education: { degree: "B.Tech CSE (Core)", school: "Amrita Vishwa Vidyapeetham", year: "2023-2027", cgpa: "7.63" }
+    desc: "Motivated B.Tech CSE student (2023-2027) with a CGPA of 7.63. Experienced in building full-stack web applications, AI/ML models, and embedded systems.", // [cite: 3]
+    location: "Coimbatore, India", // [cite: 3]
+    email: "sanjjiiev005@gmail.com", // [cite: 2]
+    education: { degree: "B.Tech CSE (Core)", school: "Amrita Vishwa Vidyapeetham", year: "2023-2027" } // [cite: 3]
   };
 
   const skillCategories = {
     "Languages": [
-      { name: "Python", icon: <FaPython /> }, { name: "Java", icon: <FaJava /> }, { name: "C/C++", icon: <SiCplusplus /> }
+      { name: "Python", icon: <FaPython /> }, { name: "Java", icon: <FaJava /> }, { name: "C", icon: <SiC /> } // [cite: 3]
     ],
     "Web & Mobile": [
-      { name: "ReactJS", icon: <FaReact /> }, { name: "NodeJS", icon: <FaNodeJs /> }, { name: "Express", icon: <SiExpress /> },
-      { name: "Flutter", icon: <SiFlutter /> }, { name: "Dart", icon: "🎯" }
+      { name: "ReactJS", icon: <FaReact /> }, { name: "NodeJS", icon: <FaNodeJs /> }, { name: "ExpressJS", icon: <SiExpress /> }, // [cite: 3]
+      { name: "Flutter", icon: <SiFlutter /> }, { name: "Dart", icon: "" } // [cite: 3]
     ],
     "AI & Data": [
-      { name: "Pytorch", icon: <SiPytorch /> }, { name: "TensorFlow", icon: <SiTensorflow /> }, { name: "OpenCV", icon: <SiOpencv /> },
-      { name: "Pandas", icon: <SiPandas /> }
+      { name: "Pytorch", icon: <SiPytorch /> }, { name: "TensorFlow", icon: <SiTensorflow /> }, { name: "OpenCV", icon: <SiOpencv /> }, // [cite: 3]
+      { name: "Pandas", icon: <SiPandas /> } // [cite: 3]
     ],
     "Database": [
-      { name: "MySQL", icon: <SiMysql /> }, { name: "MongoDB", icon: <SiMongodb /> }, { name: "Firebase", icon: <SiFirebase /> }
+      { name: "MySQL", icon: <SiMysql /> }, { name: "MongoDB", icon: <SiMongodb /> }, { name: "Firebase", icon: <SiFirebase /> } // [cite: 3]
     ],
     "Embedded/IoT": [
-      { name: "Arduino", icon: "🔌" }, { name: "Raspberry Pi", icon: <FaRaspberryPi /> }, { name: "STM32", icon: "🔧" }
+      { name: "Arduino", icon: "" }, { name: "Raspberry Pi", icon: <FaRaspberryPi /> }, { name: "STM32", icon: "" } // [cite: 3]
     ],
     "Tools": [
-      { name: "Linux", icon: <FaLinux /> }, { name: "Git", icon: <FaGitAlt /> }, { name: "Figma", icon: <FaFigma /> }
+      { name: "Linux", icon: <FaLinux /> }, { name: "Git", icon: <FaGitAlt /> }, { name: "Figma", icon: <FaFigma /> } // [cite: 3]
     ]
   };
 
   const projects = [
-    { name: "Knowva", link: "https://github.com/sanjjiiev/Knowva", desc: "Personalized AI learning platform with practice problems.", type: "Web" },
-    { name: "AmritaFinde", link: "#", desc: "Lost & Found app using Google Gemini API for item matching.", type: "Mobile" },
-    { name: "Smart-Sheild", link: "https://github.com/sanjjiiev/Smart-Sheild", desc: "AI-powered SOS system detecting accidents for ambulances.", type: "AI/IoT" },
-    { name: "GoQuest", link: "https://github.com/SanjaiPG/GoQuest", desc: "Android travel planner leveraging on-device AI.", type: "Android" },
-    { name: "Ayul", link: "https://github.com/sanjjiiev/Ayul", desc: "Bilingual app for traditional Indian medical systems.", type: "Flutter" },
-    { name: "Dynamic Route", link: "https://github.com/sanjjiiev/Dynamic-Route-Optimization-System", desc: "Real-time pathfinding visualization (Dijkstra/A*).", type: "Algo" },
+    { name: "Knowva", link: "https://github.com/sanjjiiev/Knowva", desc: "Personalized AI learning platform with practice problems.", type: "Web" }, // [cite: 3]
+    { name: "AmritaFinde", link: "#", desc: "Lost & Found app using Google Gemini API for item matching.", type: "Mobile" }, // [cite: 3]
+    { name: "Smart-Sheild", link: "https://github.com/sanjjiiev/Smart-Sheild", desc: "AI-powered SOS system detecting accidents for ambulances.", type: "AI/IoT" }, // [cite: 3]
+    { name: "GoQuest", link: "https://github.com/SanjaiPG/GoQuest", desc: "Android travel planner leveraging on-device AI.", type: "Android" }, // [cite: 3]
+    { name: "Ayul", link: "https://github.com/sanjjiiev/Ayul", desc: "Bilingual app for traditional Indian medical systems.", type: "Flutter" }, // [cite: 3]
+    { name: "Dynamic Route", link: "https://github.com/sanjjiiev/Dynamic-Route-Optimization-System", desc: "Real-time pathfinding visualization (Dijkstra/A*).", type: "Algo" }, // [cite: 3]
   ];
 
   const awards = [
-    { title: "Uyir Hackathon Finalist", year: "2024", desc: "AI SOS System for autonomous vehicles." },
-    { title: "3rd Place - Bootstrap '25", year: "2025", desc: "Defang.io Hackathon (Knowva)." },
-    { title: "Bharatiya Antariksh '25", year: "2025", desc: "Idea Successfully Submitted." }
+    { title: "Uyir Hackathon Finalist", year: "2024", desc: "AI SOS System for autonomous vehicles." }, // [cite: 3]
+    { title: "3rd Place - Bootstrap '25", year: "2025", desc: "Defang.io Hackathon (Knowva)." }, // [cite: 3]
+    { title: "Bharatiya Antariksh '25", year: "2025", desc: "Idea Successfully Submitted." } // [cite: 3]
   ];
 
   return (
@@ -175,20 +179,23 @@ const Portfolio = () => {
              </div>
           </div>
 
-          {/* --- TERMINAL --- */}
+          {/* --- TERMINAL (FIXED SCROLL) --- */}
           <div className="lg:col-span-4 border border-emerald-500/30 bg-black p-4 flex flex-col h-[450px] font-mono text-xs shadow-[0_0_20px_rgba(16,185,129,0.15)] relative z-20 backdrop-blur-md">
             <div className="flex justify-between text-gray-600 mb-2 border-b border-gray-800 pb-1 shrink-0">
               <span>BASH // ROOT</span>
               <span>v1.0.4</span>
             </div>
             
-            <div className="flex-grow overflow-y-auto mb-2 space-y-1 scrollbar-thin font-bold pr-2">
+            {/* THIS DIV HAS THE REF ATTACHED FOR SCROLLING */}
+            <div 
+              ref={terminalBodyRef}
+              className="flex-grow overflow-y-auto mb-2 space-y-1 scrollbar-thin font-bold pr-2"
+            >
               {output.map((line, i) => (
                 <div key={i} className={`${line.startsWith('>') ? 'text-emerald-500' : 'text-gray-400'} break-words`}>
                   {line}
                 </div>
               ))}
-              <div ref={bottomRef}></div>
             </div>
             
             <div className="flex items-center gap-2 text-emerald-500 shrink-0 border-t border-gray-900 pt-2">
