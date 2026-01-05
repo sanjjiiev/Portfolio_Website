@@ -94,7 +94,7 @@ const Portfolio = () => {
 
   const projects = [
     { name: "Knowva", link: "https://github.com/sanjjiiev/Knowva", desc: "Personalized AI learning platform with practice problems.", type: "Web" },
-    { name: "AmritaFinde", link: "https://github.com/SarvanthiSivaraj/AmritaFind", desc: "Lost & Found app using Google Gemini API for item matching.", type: "Mobile" },
+    { name: "AmritaFind", link: "https://github.com/SarvanthiSivaraj/AmritaFind", desc: "Lost & Found app using Google Gemini API for item matching.", type: "Mobile" },
     { name: "Smart-Sheild", link: "https://github.com/sanjjiiev/Smart-Sheild", desc: "AI-powered SOS system detecting accidents for ambulances.", type: "AI/IoT" },
     { name: "GoQuest", link: "https://github.com/SanjaiPG/GoQuest", desc: "Android travel planner leveraging on-device AI.", type: "Android" },
     { name: "Ayul", link: "https://github.com/sanjjiiev/Ayul", desc: "Bilingual app for traditional Indian medical systems.", type: "Flutter" },
@@ -170,7 +170,7 @@ const Portfolio = () => {
                    <span className="text-white font-bold block text-sm">{profile.education.degree}</span>
                    <div className="flex justify-between mt-1 text-gray-400">
                       <span>{profile.education.school}</span>
-                      <span className="text-emerald-400 font-bold drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]">CGPA: {profile.education.cgpa}</span>
+                     
                    </div>
                 </div>
                 <div className="bg-gray-900/50 p-3 border border-gray-800 hover:border-emerald-500/30 transition-colors flex flex-col justify-center gap-2">
@@ -187,7 +187,7 @@ const Portfolio = () => {
                <a href="https://github.com/sanjjiiev" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-emerald-900/20 border border-emerald-500/50 text-emerald-400 px-4 py-2 text-sm hover:bg-emerald-500 hover:text-black transition-all font-bold cursor-pointer">
                  <FaGithub /> GITHUB
                </a>
-               <a href="https://www.linkedin.com/in/sanjjiiev-s-a20757287/" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-2 text-sm hover:bg-white hover:text-black transition-all font-bold cursor-pointer">
+               <a href="https://www.linkedin.com/in/sanjjiiev-s-043183290" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-2 text-sm hover:bg-white hover:text-black transition-all font-bold cursor-pointer">
                  <FaLinkedin /> LINKEDIN
                </a>
              </div>
