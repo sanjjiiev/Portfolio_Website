@@ -80,17 +80,17 @@ const Portfolio = () => {
 
   const projects = [
     { name: "Knowva", link: "https://github.com/sanjjiiev/Knowva", desc: "Personalized AI learning platform with practice problems.", type: "Web" }, // [cite: 3]
-    { name: "AmritaFinde", link: "#", desc: "Lost & Found app using Google Gemini API for item matching.", type: "Mobile" }, // [cite: 3]
+    { name: "AmritaFind", link: "https://github.com/SarvanthiSivaraj/AmritaFind", desc: "Lost & Found app using Google Gemini API for item matching.", type: "Mobile" }, // [cite: 3]
     { name: "Smart-Sheild", link: "https://github.com/sanjjiiev/Smart-Sheild", desc: "AI-powered SOS system detecting accidents for ambulances.", type: "AI/IoT" }, // [cite: 3]
     { name: "GoQuest", link: "https://github.com/SanjaiPG/GoQuest", desc: "Android travel planner leveraging on-device AI.", type: "Android" }, // [cite: 3]
     { name: "Ayul", link: "https://github.com/sanjjiiev/Ayul", desc: "Bilingual app for traditional Indian medical systems.", type: "Flutter" }, // [cite: 3]
-    { name: "Dynamic Route", link: "https://github.com/sanjjiiev/Dynamic-Route-Optimization-System", desc: "Real-time pathfinding visualization (Dijkstra/A*).", type: "Algo" }, // [cite: 3]
+    { name: "OptiMile", link: "https://github.com/sanjjiiev/Dynamic-Route-Optimization-System", desc: "Real-time pathfinding visualization (Dijkstra/A*).", type: "DSA" }, // [cite: 3]
   ];
 
   const awards = [
-    { title: "Uyir Hackathon Finalist", year: "2024", desc: "AI SOS System for autonomous vehicles." }, // [cite: 3]
-    { title: "3rd Place - Bootstrap '25", year: "2025", desc: "Defang.io Hackathon (Knowva)." }, // [cite: 3]
-    { title: "Bharatiya Antariksh '25", year: "2025", desc: "Idea Successfully Submitted." } // [cite: 3]
+    { title: "Uyir Hackathon Finalist", year: "2024", desc: " Developed an AI-powered SOS system for autonomous vehicles, competing in the final round" }, // [cite: 3]
+    { title: "3rd Place - Bootstrap '25", year: "2025", desc: "Developed an AI-powered Personalized Learning Management System, earning third place in the competition." }, // [cite: 3]
+    { title: "Bharatiya Antariksh '25", year: "2025", desc: "successfully submitted my idea for the Bharatiya Antariksh Hackathon 2025." } // [cite: 3]
   ];
 
   return (
