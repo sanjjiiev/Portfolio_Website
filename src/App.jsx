@@ -90,36 +90,33 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen text-gray-300 font-mono relative overflow-x-hidden selection:bg-emerald-500/30 pb-12">
+    <div className="min-h-screen bg-black text-gray-300 font-mono relative overflow-x-hidden selection:bg-emerald-500/30 pb-12">
       
-      {/* --- DYNAMIC BACKGROUND LAYERS --- */}
-      
-      {/* 1. Cyber Aurora Gradient (Base) */}
-      <div className="animated-bg"></div>
-
-      {/* 2. Floating Particles */}
+      {/* 1. PARTICLES (Contrast against black) */}
       <div className="particles">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(40)].map((_, i) => (
           <div 
             key={i} 
             className="particle"
             style={{
               left: `${Math.random() * 100}%`,
-              animationDuration: `${Math.random() * 10 + 5}s`,
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              animationDuration: `${Math.random() * 8 + 4}s`,
               animationDelay: `${Math.random() * 5}s`
             }}
           ></div>
         ))}
       </div>
 
-      {/* 3. Grid Floor */}
+      {/* 2. HIGH VISIBILITY GRID */}
       <div className="retro-grid"></div>
 
-      {/* 4. Scanlines Overlay */}
+      {/* 3. SCANLINES */}
       <div className="scanlines"></div>
 
       {/* TOP BAR */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-[#050505]/80 backdrop-blur-md border-b border-gray-800/50 px-4 py-2 flex justify-between items-center text-[10px] md:text-xs text-emerald-500 tracking-widest shadow-lg">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur border-b border-gray-800 px-4 py-2 flex justify-between items-center text-[10px] md:text-xs text-emerald-500 tracking-widest shadow-lg">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
           SANJJIIEV_OS_V2.0
@@ -134,7 +131,7 @@ const Portfolio = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
           
           {/* Identity Card */}
-          <div className="lg:col-span-8 border border-gray-700/50 bg-[#0a0a0a]/80 p-6 md:p-8 relative group overflow-hidden shadow-2xl backdrop-blur-sm">
+          <div className="lg:col-span-8 border border-gray-800 bg-[#050505]/90 p-6 md:p-8 relative group overflow-hidden shadow-2xl backdrop-blur-sm">
              <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Cpu size={140} className="text-emerald-500" />
              </div>
@@ -145,12 +142,12 @@ const Portfolio = () => {
              <p className="text-lg text-emerald-500 mb-4 font-bold flex items-center gap-2">
                <ChevronRight size={20} /> {profile.role}
              </p>
-             <p className="max-w-2xl text-gray-400 text-sm md:text-base leading-relaxed mb-6 border-l-2 border-gray-700 pl-4">
+             <p className="max-w-2xl text-gray-400 text-sm md:text-base leading-relaxed mb-6 border-l-2 border-emerald-500/50 pl-4">
                {profile.desc}
              </p>
              
              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-6">
-                <div className="bg-gray-900/60 p-3 border border-gray-700/50 hover:border-emerald-500/30 transition-colors">
+                <div className="bg-gray-900/50 p-3 border border-gray-800 hover:border-emerald-500/30 transition-colors">
                    <span className="text-gray-500 block mb-1">EDUCATION PROTOCOL</span>
                    <span className="text-white font-bold block text-sm">{profile.education.degree}</span>
                    <div className="flex justify-between mt-1 text-gray-400">
@@ -158,7 +155,7 @@ const Portfolio = () => {
                       <span className="text-emerald-400 font-bold drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]">{profile.education.cgpa}</span>
                    </div>
                 </div>
-                <div className="bg-gray-900/60 p-3 border border-gray-700/50 hover:border-emerald-500/30 transition-colors flex flex-col justify-center gap-2">
+                <div className="bg-gray-900/50 p-3 border border-gray-800 hover:border-emerald-500/30 transition-colors flex flex-col justify-center gap-2">
                    <div className="flex items-center gap-2 hover:text-white transition-colors">
                       <FaEnvelope className="text-emerald-600"/> {profile.email}
                    </div>
@@ -178,8 +175,8 @@ const Portfolio = () => {
              </div>
           </div>
 
-          {/* --- TERMINAL (FIXED HEIGHT) --- */}
-          <div className="lg:col-span-4 border border-emerald-500/30 bg-black/90 p-4 flex flex-col h-[450px] font-mono text-xs shadow-[0_0_20px_rgba(16,185,129,0.15)] relative z-20 backdrop-blur-md">
+          {/* --- TERMINAL --- */}
+          <div className="lg:col-span-4 border border-emerald-500/30 bg-black p-4 flex flex-col h-[450px] font-mono text-xs shadow-[0_0_20px_rgba(16,185,129,0.15)] relative z-20 backdrop-blur-md">
             <div className="flex justify-between text-gray-600 mb-2 border-b border-gray-800 pb-1 shrink-0">
               <span>BASH // ROOT</span>
               <span>v1.0.4</span>
@@ -208,7 +205,7 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* --- ROW 2: SKILLS CHIPSET --- */}
+        {/* --- SKILLS --- */}
         <div className="mb-10">
           <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
             <Cpu className="text-emerald-500" /> SYSTEM_MODULES (SKILLS)
@@ -216,13 +213,13 @@ const Portfolio = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {Object.entries(skillCategories).map(([category, items]) => (
-              <div key={category} className="border border-gray-700/50 bg-[#0a0a0a]/60 p-4 hover:border-emerald-500/50 transition-colors backdrop-blur-md">
+              <div key={category} className="border border-gray-800 bg-[#050505]/80 p-4 hover:border-emerald-500/50 transition-colors backdrop-blur-sm">
                  <h3 className="text-xs font-bold text-gray-500 uppercase mb-3 flex items-center gap-2">
                     <span className="w-1 h-1 bg-emerald-500"></span> {category}
                  </h3>
                  <div className="flex flex-wrap gap-2">
                     {items.map((skill, idx) => (
-                       <div key={idx} className="flex items-center gap-2 bg-[#111]/80 border border-gray-700 px-3 py-1.5 text-xs text-gray-300 hover:bg-emerald-500 hover:text-black hover:border-emerald-400 transition-all cursor-default group">
+                       <div key={idx} className="flex items-center gap-2 bg-[#111] border border-gray-700 px-3 py-1.5 text-xs text-gray-300 hover:bg-emerald-500 hover:text-black hover:border-emerald-400 transition-all cursor-default group">
                           {skill.icon && <span className="text-emerald-500 group-hover:text-black text-sm">{skill.icon}</span>}
                           <span className="font-bold">{skill.name}</span>
                        </div>
@@ -233,7 +230,7 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* --- ROW 3: PROJECTS --- */}
+        {/* --- PROJECTS --- */}
         <div className="mb-10">
            <div className="flex items-center justify-between mb-6 border-b border-gray-800 pb-2">
               <h2 className="text-xl font-bold text-white flex items-center gap-2">
@@ -244,7 +241,7 @@ const Portfolio = () => {
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {projects.map((proj, idx) => (
                  <a key={idx} href={proj.link} target="_blank" rel="noreferrer" className="block group">
-                    <div className="h-full border border-gray-700/50 bg-[#0a0a0a]/60 p-5 hover:bg-[#111] hover:border-emerald-500/50 transition-all relative overflow-hidden backdrop-blur-sm">
+                    <div className="h-full border border-gray-800 bg-[#050505]/80 p-5 hover:bg-[#111] hover:border-emerald-500/50 transition-all relative overflow-hidden backdrop-blur-sm">
                        <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-bl-full -mr-8 -mt-8 transition-all group-hover:from-emerald-500/20"></div>
                        
                        <div className="flex justify-between items-start mb-3">
@@ -268,8 +265,8 @@ const Portfolio = () => {
            </div>
         </div>
 
-        {/* --- ROW 4: AWARDS --- */}
-        <div className="border border-emerald-900/30 bg-emerald-900/10 p-6 md:p-8 backdrop-blur-md">
+        {/* --- AWARDS --- */}
+        <div className="border border-emerald-900/30 bg-emerald-900/10 p-6 md:p-8 backdrop-blur-sm">
            <h2 className="text-xl font-bold text-emerald-400 mb-6 flex items-center gap-2">
               <FaTrophy /> ACHIEVEMENT_LOG
            </h2>
@@ -290,7 +287,7 @@ const Portfolio = () => {
         </div>
 
         {/* FOOTER */}
-        <div className="mt-12 pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-600 uppercase tracking-widest bg-[#050505]/80 p-4">
+        <div className="mt-12 pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-600 uppercase tracking-widest bg-black/80 p-4">
            <p>© 2026 SANJJIIEV S // SYSTEM OPTIMIZED</p>
            <p>BUILT_WITH_REACT_&_TAILWIND</p>
         </div>
