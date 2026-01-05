@@ -4,42 +4,94 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d0d0d;
+  background: #050505;
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: #1f2937;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #10b981;
 }
 
-/* 1. Moving Grid Animation */
-.retro-grid {
-  background-size: 40px 40px;
-  background-image:
-    linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
-  transform: perspective(500px) rotateX(60deg);
-  animation: grid-move 20s linear infinite;
+/* --- 1. THE MOVING "CYBER AURORA" BACKGROUND --- */
+.animated-bg {
   position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: 
+    radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.08), transparent 25%), 
+    radial-gradient(circle at 85% 30%, rgba(6, 78, 59, 0.15), transparent 25%);
+  background-color: #050505;
+  animation: bg-pulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes bg-pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+/* --- 2. RETRO GRID FLOOR (Enhanced) --- */
+.retro-grid {
+  position: fixed;
+  bottom: -20%;
   left: -50%;
   width: 200%;
-  height: 200vh;
-  z-index: 0;
+  height: 120vh;
+  background-image:
+    linear-gradient(to right, rgba(16, 185, 129, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 185, 129, 0.1) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(500px) rotateX(60deg);
+  animation: grid-move 4s linear infinite;
+  z-index: -1;
   pointer-events: none;
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 60%);
 }
 
 @keyframes grid-move {
-  0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-  100% { transform: perspective(500px) rotateX(60deg) translateY(40px); }
+  0% { background-position: 0 0; }
+  100% { background-position: 0 60px; }
 }
 
-/* 2. CRT Scanline Overlay */
+/* --- 3. FLOATING PARTICLES (Upwards) --- */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  width: 2px;
+  height: 2px;
+  background: #10b981;
+  box-shadow: 0 0 5px #10b981;
+  animation: floatUp linear infinite;
+  opacity: 0;
+}
+
+/* Randomizing particle movement via CSS classes in React loop */
+@keyframes floatUp {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.5; }
+  100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+}
+
+/* --- 4. SCANLINES & NOISE --- */
 .scanlines {
   background: linear-gradient(
     to bottom,
@@ -50,26 +102,12 @@
   );
   background-size: 100% 4px;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 50;
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
-/* Blinking Cursor */
-.cursor-blink {
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-/* Glow Effect */
 .glow-text {
-  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+  text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
 }
