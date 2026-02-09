@@ -226,5 +226,3 @@ PORT=5001
 -   **Database Changes**: When modifying `schema.prisma`, always run `npx prisma generate` and `npx prisma db push` to update the client and database.
 
 ---
-
-*Generated for VoteGuard Project*
