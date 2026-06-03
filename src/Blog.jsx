@@ -6,7 +6,7 @@ export const blogPosts = [
   {
     id: "hft-bare-metal",
     title: "Demystifying High-Frequency Trading: A Developer's Dive into the Bare Metal",
-    date: "Oct 26, 2026",
+    date: "Jun 3, 2026",
     tags: ["HFT", "Distributed Systems", "Performance", "Finance"],
     image: hftImage,
     snippet: "I recently fell down a rabbit hole. It started with a late-night YouTube recommendation: a documentary about traders fighting over millionths of a second. This is an arms race fought with code, physics, and custom silicon.",
