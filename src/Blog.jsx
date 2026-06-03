@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Clock, ChevronRight, Terminal, ArrowLeft, FileText } from 'lucide-react';
+import { Calendar, ChevronRight, Terminal, ArrowLeft, FileText } from 'lucide-react';
 import hftImage from './assets/HFT.png';
 
 export const blogPosts = [
@@ -120,7 +120,6 @@ const Blog = ({ activePost, setActivePost }) => {
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400 font-mono mb-10 pb-10 border-b border-white/10">
             <span className="flex items-center gap-1.5"><Calendar size={16} className="text-violet-400/70" /> {post.date}</span>
-            <span className="flex items-center gap-1.5"><Clock size={16} className="text-violet-400/70" /> {post.readTime}</span>
             <div className="flex gap-2 ml-auto">
               {post.tags.map((tag, idx) => (
                 <span key={idx} className="text-[10px] uppercase tracking-wider font-bold text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-md border border-emerald-400/20">
@@ -199,7 +198,6 @@ const Blog = ({ activePost, setActivePost }) => {
               <div className="mt-auto pt-5 border-t border-white/5 flex items-center justify-between text-xs text-slate-500 font-mono relative z-10">
                 <div className="flex items-center gap-4">
                   <span className="flex items-center gap-1.5"><Calendar size={14} className="text-violet-400/70" /> {post.date}</span>
-                  <span className="flex items-center gap-1.5"><Clock size={14} className="text-violet-400/70" /> {post.readTime}</span>
                 </div>
                 <div className="flex items-center gap-1 text-emerald-500 group-hover:translate-x-1 transition-transform">
                   Read Log <ChevronRight size={16} />
