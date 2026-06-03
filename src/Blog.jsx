@@ -90,7 +90,7 @@ First, it made me respect real-time constraints. I used to shrug off 10-millisec
 
 Second, it demystified the market for me as a small-time investor. I now know that when I place a limit order, there’s a high chance an HFT algorithm is on the other side, instantly deciding whether to fill me based on a model of my likely future behavior. That doesn’t make me lose money directly—in fact, the tight spreads help me—but it means my order is fuel for someone else’s statistical engine. I try to avoid market orders during volatile news events because I know the liquidity I see might not be real when it counts.
 
-Third, it opened my eyes to a whole career niche. I’m not a quant, but I now see that HFT needs kernel developers, FPGA engineers, network wizards, and performance-obsessed C++ folks. There’s a whole branch of software engineering where the ultimate performance benchmark isn’t a throughput number, but a profit-and-loss statement updated every millisecond. That’s terrifying and thrilling in equal measure.
+Third, it opened my eyes to a whole career niche. I’m not a quant, but I now see that HFT needs kernel developers, FPGA engineers, network wizards, and performance-obsessed C++ folks. There’s a whole branch of software engineering where the ultimate performance benchmark isnt a throughput number, but a profit-and-loss statement updated every millisecond. That’s terrifying and thrilling in equal measure.
 
 ---
 
@@ -118,6 +118,14 @@ const Blog = ({ activePost, setActivePost }) => {
 
           <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-6">{post.title}</h1>
 
+          {/* Image is now below the title */}
+          {post.image && (
+            <div className="mb-6 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+              <img src={post.image} alt={post.title} className="w-full h-auto object-cover" />
+            </div>
+          )}
+
+          {/* Tags and Date are now below the image */}
           <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400 font-mono mb-10 pb-10 border-b border-white/10">
             <span className="flex items-center gap-1.5">{post.date}</span>
             <div className="flex gap-2 ml-auto">
@@ -128,12 +136,6 @@ const Blog = ({ activePost, setActivePost }) => {
               ))}
             </div>
           </div>
-
-          {post.image && (
-            <div className="mb-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-              <img src={post.image} alt={post.title} className="w-full h-auto object-cover" />
-            </div>
-          )}
 
           <div className="prose prose-invert max-w-none text-slate-300 leading-loose text-lg font-sans">
             {post.content.split('\n\n').map((paragraph, idx) => {
@@ -184,6 +186,17 @@ const Blog = ({ activePost, setActivePost }) => {
               {/* Subtle Glow inside card */}
               <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-violet-500/10 rounded-full blur-2xl group-hover:bg-violet-500/20 transition-all duration-500"></div>
 
+              {/* Title First */}
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors relative z-10">{post.title}</h3>
+              
+              {/* Image Second */}
+              {post.image && (
+                <div className="mb-6 rounded-lg overflow-hidden border border-white/10 relative z-10">
+                  <img src={post.image} alt={post.title} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+              )}
+
+              {/* Tags Third */}
               <div className="flex flex-wrap gap-2 mb-6 relative z-10">
                 {post.tags.map((tag, idx) => (
                   <span key={idx} className="text-[10px] uppercase tracking-wider font-bold text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-md border border-emerald-400/20">
@@ -192,7 +205,6 @@ const Blog = ({ activePost, setActivePost }) => {
                 ))}
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors relative z-10">{post.title}</h3>
               <p className="text-sm text-slate-400 leading-relaxed mb-8 flex-grow relative z-10">{post.snippet}</p>
 
               <div className="mt-auto pt-5 border-t border-white/5 flex items-center justify-between text-xs text-slate-500 font-mono relative z-10">

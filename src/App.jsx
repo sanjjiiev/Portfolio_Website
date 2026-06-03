@@ -382,6 +382,18 @@ const Portfolio = () => {
               <button key={post.id} onClick={() => { setActivePost(post.id); setActivePage('blog'); }} className="block group text-left w-full">
                 <div className="h-full rounded-xl border border-white/5 bg-white/[0.02] p-8 hover:bg-white/[0.04] hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden backdrop-blur-sm flex flex-col shadow-lg">
                   <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-violet-500/10 rounded-full blur-2xl group-hover:bg-violet-500/20 transition-all duration-500"></div>
+                  
+                  {/* Title First */}
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors relative z-10">{post.title}</h3>
+                  
+                  {/* Image Second */}
+                  {post.image && (
+                    <div className="mb-6 rounded-lg overflow-hidden border border-white/10 relative z-10">
+                      <img src={post.image} alt={post.title} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                  )}
+
+                  {/* Tags Third */}
                   <div className="flex flex-wrap gap-2 mb-6 relative z-10">
                     {post.tags.map((tag, idx) => (
                       <span key={idx} className="text-[10px] uppercase tracking-wider font-bold text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-md border border-emerald-400/20">
@@ -389,7 +401,7 @@ const Portfolio = () => {
                       </span>
                     ))}
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors relative z-10">{post.title}</h3>
+                  
                   <p className="text-sm text-slate-400 leading-relaxed mb-8 flex-grow relative z-10">{post.snippet}</p>
                   <div className="mt-auto pt-5 border-t border-white/5 flex items-center justify-between text-xs text-slate-500 font-mono relative z-10">
                     <div className="flex items-center gap-4"><span className="flex items-center gap-1.5">{post.date}</span></div>
