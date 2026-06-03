@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Terminal, Layers, ChevronRight, Cpu, Globe, ExternalLink, Briefcase, Zap, Star, Home, FileText, Calendar } from 'lucide-react';
+import { Terminal, Layers, ChevronRight, Cpu, Globe, ExternalLink, Briefcase, Zap, Star, Home, FileText } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPython, FaJava, FaReact, FaNodeJs, FaLinux, FaGitAlt, FaRaspberryPi, FaFigma, FaAward, FaTrophy, FaHtml5, FaCss3Alt, FaJs, FaServer, FaShieldAlt } from 'react-icons/fa';
 import { SiExpress, SiFlutter, SiPytorch, SiPandas, SiOpencv, SiTensorflow, SiMysql, SiMongodb, SiFirebase, SiCplusplus, SiDart, SiNumpy, SiScikitlearn, SiHuggingface, SiSqlite, SiAndroidstudio, SiArduino, SiWireshark, SiCisco, SiMetasploit, SiBlender, SiDocker, SiNginx, SiRedis } from 'react-icons/si';
 import Blog, { blogPosts } from './Blog';
@@ -392,7 +392,7 @@ const Portfolio = () => {
                   <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors relative z-10">{post.title}</h3>
                   <p className="text-sm text-slate-400 leading-relaxed mb-8 flex-grow relative z-10">{post.snippet}</p>
                   <div className="mt-auto pt-5 border-t border-white/5 flex items-center justify-between text-xs text-slate-500 font-mono relative z-10">
-                    <div className="flex items-center gap-4"><span className="flex items-center gap-1.5"><Calendar size={14} className="text-violet-400/70" /> {post.date}</span></div>
+                    <div className="flex items-center gap-4"><span className="flex items-center gap-1.5">{post.date}</span></div>
                     <div className="flex items-center gap-1 text-emerald-500 group-hover:translate-x-1 transition-transform">
                       Read Log <ChevronRight size={16} />
                     </div>
