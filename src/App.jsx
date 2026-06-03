@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Terminal, Layers, ChevronRight, Cpu, Globe, ExternalLink, Briefcase, Zap, Star } from 'lucide-react';
+import { Terminal, Layers, ChevronRight, Cpu, Globe, ExternalLink, Briefcase, Zap, Star, Home, FileText, Calendar } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPython, FaJava, FaReact, FaNodeJs, FaLinux, FaGitAlt, FaRaspberryPi, FaFigma, FaAward, FaTrophy, FaHtml5, FaCss3Alt, FaJs, FaServer, FaShieldAlt } from 'react-icons/fa';
 import { SiExpress, SiFlutter, SiPytorch, SiPandas, SiOpencv, SiTensorflow, SiMysql, SiMongodb, SiFirebase, SiCplusplus, SiDart, SiNumpy, SiScikitlearn, SiHuggingface, SiSqlite, SiAndroidstudio, SiArduino, SiWireshark, SiCisco, SiMetasploit, SiBlender, SiDocker, SiNginx, SiRedis } from 'react-icons/si';
+import Blog, { blogPosts } from './Blog';
 
 const Portfolio = () => {
+  const [activePage, setActivePage] = useState('home');
+  const [activePost, setActivePost] = useState(null);
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [input, setInput] = useState('');
   const [output, setOutput] = useState([
@@ -151,13 +154,24 @@ const Portfolio = () => {
 
       {/* TOP NAVBAR */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-xl border-b border-white/5 px-6 py-3 flex justify-between items-center text-xs font-mono text-emerald-400 shadow-2xl">
-        <div className="flex items-center gap-3">
-          <div className="flex gap-1.5">
-            <span className="w-3 h-3 bg-red-500/80 rounded-full"></span>
-            <span className="w-3 h-3 bg-yellow-500/80 rounded-full"></span>
-            <span className="w-3 h-3 bg-green-500/80 rounded-full"></span>
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3">
+            <div className="flex gap-1.5">
+              <span className="w-3 h-3 bg-red-500/80 rounded-full"></span>
+              <span className="w-3 h-3 bg-yellow-500/80 rounded-full"></span>
+              <span className="w-3 h-3 bg-green-500/80 rounded-full"></span>
+            </div>
+            <span className="tracking-widest font-bold opacity-80 ml-2 hidden sm:inline-block">SYS.CORE.v3</span>
           </div>
-          <span className="tracking-widest font-bold opacity-80 ml-2">SYS.CORE.v3</span>
+          
+          <div className="flex gap-4 items-center ml-2 md:ml-4">
+            <button onClick={() => { setActivePage('home'); setActivePost(null); }} className={`flex items-center gap-1.5 transition-colors hover:text-white ${activePage === 'home' ? 'text-white' : 'opacity-70'}`}>
+              <Home size={14} /> HOME
+            </button>
+            <button onClick={() => { setActivePage('blog'); setActivePost(null); }} className={`flex items-center gap-1.5 transition-colors hover:text-white ${activePage === 'blog' && !activePost ? 'text-white' : 'opacity-70'}`}>
+              <FileText size={14} /> BLOG
+            </button>
+          </div>
         </div>
         <div className="hidden md:flex gap-6 items-center opacity-80">
           <span>{time}</span>
@@ -166,6 +180,9 @@ const Portfolio = () => {
       </div>
 
       <div className="relative z-10 p-4 md:p-8 max-w-7xl mx-auto mt-20">
+
+        {activePage === 'home' ? (
+          <>
 
         {/* --- HERO SECTION: PROFILE & TERMINAL --- */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
@@ -352,6 +369,40 @@ const Portfolio = () => {
           </div>
         </div>
 
+        {/* --- RECENT LOGS / BLOG PREVIEW --- */}
+        <div className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <FileText className="text-emerald-400" size={28} />
+            <h2 className="text-2xl font-bold text-white tracking-tight">Recent Logs</h2>
+            <div className="h-[1px] flex-grow bg-gradient-to-r from-white/10 to-transparent ml-4"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {blogPosts.slice(0, 2).map((post) => (
+              <button key={post.id} onClick={() => { setActivePost(post.id); setActivePage('blog'); }} className="block group text-left w-full">
+                <div className="h-full rounded-xl border border-white/5 bg-white/[0.02] p-8 hover:bg-white/[0.04] hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden backdrop-blur-sm flex flex-col shadow-lg">
+                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-violet-500/10 rounded-full blur-2xl group-hover:bg-violet-500/20 transition-all duration-500"></div>
+                  <div className="flex flex-wrap gap-2 mb-6 relative z-10">
+                    {post.tags.map((tag, idx) => (
+                      <span key={idx} className="text-[10px] uppercase tracking-wider font-bold text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-md border border-emerald-400/20">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-300 transition-colors relative z-10">{post.title}</h3>
+                  <p className="text-sm text-slate-400 leading-relaxed mb-8 flex-grow relative z-10">{post.snippet}</p>
+                  <div className="mt-auto pt-5 border-t border-white/5 flex items-center justify-between text-xs text-slate-500 font-mono relative z-10">
+                    <div className="flex items-center gap-4"><span className="flex items-center gap-1.5"><Calendar size={14} className="text-violet-400/70" /> {post.date}</span></div>
+                    <div className="flex items-center gap-1 text-emerald-500 group-hover:translate-x-1 transition-transform">
+                      Read Log <ChevronRight size={16} />
+                    </div>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* --- AWARDS --- */}
         <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-900/20 to-black p-8 md:p-10 backdrop-blur-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-violet-600/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -374,6 +425,11 @@ const Portfolio = () => {
             ))}
           </div>
         </div>
+
+          </>
+        ) : (
+          <Blog activePost={activePost} setActivePost={setActivePost} setActivePage={setActivePage} />
+        )}
 
         {/* FOOTER */}
         <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">
