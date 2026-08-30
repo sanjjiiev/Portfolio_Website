@@ -386,6 +386,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:postId" element={<Blog />} />
+          <Route path="*" element={<HomePage />} />
         </Routes>
 
         {/* FOOTER */}
