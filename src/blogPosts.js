@@ -192,8 +192,8 @@ Every tool has trade-offs. Here is the unvarnished truth about this setup, broke
 If you're ready to break free from subscription fatigue and set up your own autonomous AI coding agent, here's exactly how to do it.
 
 **Prerequisites**
-- Node.js (v18 or higher)
-- A free DeepSeek account at \`chat.deepseek.com\`
+*   Node.js (v18 or higher)
+*   A free DeepSeek account at \`chat.deepseek.com\`
 
 **Step 1: Install the Agent**
 \`\`\`bash
@@ -261,7 +261,7 @@ deepseek-agent --interactive
 **Full Documentation & Updated Files**
 All the source files, configuration templates, and detailed documentation are available in my GitHub repository:
 
-🔗 **[Your GitHub Repository URL]**
+[sanjjiiev/Deepseek-browser-agent-Configuration](https://github.com/sanjjiiev/Deepseek-browser-agent-Configuration)
 
 Star the repo, fork it, and customize it further to fit your exact workflow. Contributions and issues are always welcome!
 
@@ -284,5 +284,5 @@ Building this was a labor of love and a bit of developer rebellion. I've proved 
 Whether untangling a nightmare legacy codebase, prototyping a weekend passion project, or just trying to learn a new language, this agent is ready to help. It works tirelessly, explains its thoughts beautifully, and leaves the final say entirely up to the user.
 
 *Want to feel the magic yourself? The tools belong to the community, and the customizations are just a few lines of code away. Grab \`deepseek-browser-agent\`, bolt on the safety guards, and start building alongside the world's most powerful free AI.*`
-}
+  }
 ];

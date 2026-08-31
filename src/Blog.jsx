@@ -3,6 +3,118 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ChevronRight, Terminal, ArrowLeft, FileText } from 'lucide-react';
 import { blogPosts } from './blogPosts';
 
+const escapeHtml = (text) =>
+  text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+const formatInlineMarkdown = (text) => {
+  let html = escapeHtml(text);
+  const linkTokens = [];
+
+  html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (match, label, url) => {
+    if (url.includes('localhost:4173/Portfolio_Website') || url.includes('%3Ca%20href%3D')) {
+      return label;
+    }
+
+    const token = `__MD_LINK_${linkTokens.length}__`;
+    linkTokens.push(`<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-emerald-300 underline underline-offset-2 decoration-emerald-400/80 hover:text-emerald-200">${label}</a>`);
+    return token;
+  });
+
+  html = html.replace(/(^|[^"'])((https?:\/\/[^\s<>"']+))/g, (match, prefix, url) => {
+    if (url.includes('localhost:4173/Portfolio_Website') || url.includes('%3Ca%20href%3D')) {
+      return match;
+    }
+
+    const token = `__MD_URL_${linkTokens.length}__`;
+    linkTokens.push(`<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-emerald-300 underline underline-offset-2 decoration-emerald-400/80 hover:text-emerald-200">${url}</a>`);
+    return `${prefix}${token}`;
+  });
+
+  html = html.replace(/`([^`]+)`/g,
+    '<code class="bg-black/50 text-emerald-400 px-1.5 py-0.5 rounded text-sm font-mono border border-white/10">$1</code>');
+
+  html = html.replace(/\*\*(.*?)\*\*/g,
+    '<strong class="text-white font-bold">$1</strong>');
+
+  html = html.replace(/\*(.*?)\*/g,
+    '<em class="text-emerald-300/90">$1</em>');
+
+  html = html.replace(/__MD_LINK_(\d+)__/g, (_, index) => linkTokens[Number(index)] || '');
+  html = html.replace(/__MD_URL_(\d+)__/g, (_, index) => linkTokens[Number(index)] || '');
+
+  return html;
+};
+
+const renderMarkdownBlock = (block, idx) => {
+  const trimmed = block.trim();
+
+  if (!trimmed) return null;
+
+  if (trimmed.startsWith('```')) {
+    const languageMatch = trimmed.match(/^```(\w+)?/);
+    const language = languageMatch && languageMatch[1] ? languageMatch[1] : 'bash';
+    const codeMatch = trimmed.match(/^```(?:\w+)?\n([\s\S]*?)\n```$/);
+    const code = codeMatch ? codeMatch[1].trim() : trimmed.replace(/^```[\s\S]*?\n/, '').replace(/\n```$/, '').trim();
+
+    return (
+      <div key={idx} className="mb-6 overflow-hidden rounded-xl border border-emerald-500/20 bg-[#0b1120] shadow-[0_0_0_1px_rgba(16,185,129,0.08)]">
+        <div className="flex items-center gap-2 border-b border-white/10 bg-[#111827] px-3 py-2">
+          <div className="flex gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+          </div>
+          <span className="ml-2 text-[10px] uppercase tracking-[0.18em] text-slate-400 font-mono">{language}</span>
+        </div>
+        <pre className="overflow-x-auto p-4 text-sm leading-6 text-emerald-300 font-mono">
+          <code>{code}</code>
+        </pre>
+      </div>
+    );
+  }
+
+  if (trimmed.startsWith('## ')) {
+    return <h2 key={idx} className="text-2xl font-bold text-white mt-12 mb-6 tracking-tight">{trimmed.replace('## ', '')}</h2>;
+  }
+
+  if (trimmed.startsWith('### ')) {
+    return <h3 key={idx} className="text-xl font-bold text-white mt-8 mb-4 tracking-tight">{trimmed.replace('### ', '')}</h3>;
+  }
+
+  if (trimmed.startsWith('---')) {
+    return <hr key={idx} className="border-white/10 my-12" />;
+  }
+
+  if (/^(?:\*|-)\s+/.test(trimmed)) {
+    const items = trimmed.split(/\n/).filter(Boolean).map((line) => line.replace(/^(?:\*|- )\s*/, '').trim());
+    return (
+      <ul key={idx} className="mb-6 list-disc space-y-3 pl-6 text-slate-300">
+        {items.map((item, itemIdx) => (
+          <li key={itemIdx} dangerouslySetInnerHTML={{ __html: formatInlineMarkdown(item) }} />
+        ))}
+      </ul>
+    );
+  }
+
+  if (/^\d+\.\s+/.test(trimmed)) {
+    const items = trimmed.split(/\n/).filter(Boolean).map((line) => line.replace(/^\d+\.\s*/, '').trim());
+    return (
+      <ol key={idx} className="mb-6 list-decimal space-y-3 pl-6 text-slate-300">
+        {items.map((item, itemIdx) => (
+          <li key={itemIdx} dangerouslySetInnerHTML={{ __html: formatInlineMarkdown(item) }} />
+        ))}
+      </ol>
+    );
+  }
+
+  return <p key={idx} className="mb-6" dangerouslySetInnerHTML={{ __html: formatInlineMarkdown(trimmed) }} />;
+};
+
 const Blog = () => {
   const { postId } = useParams();
   const navigate = useNavigate();
@@ -39,25 +151,7 @@ const Blog = () => {
           </div>
 
           <div className="prose prose-invert max-w-none text-slate-300 leading-loose text-lg font-sans">
-            {post.content.split('\n\n').map((paragraph, idx) => {
-              if (paragraph.startsWith('## ')) {
-                return <h2 key={idx} className="text-2xl font-bold text-white mt-12 mb-6 tracking-tight">{paragraph.replace('## ', '')}</h2>;
-              }
-              if (paragraph.startsWith('### ')) {
-                return <h3 key={idx} className="text-xl font-bold text-white mt-8 mb-4 tracking-tight">{paragraph.replace('### ', '')}</h3>;
-              }
-              if (paragraph.startsWith('---')) {
-                return <hr key={idx} className="border-white/10 my-12" />;
-              }
-              
-              // Simple markdown parser for bold, italics, and inline code
-              const htmlContent = paragraph
-                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-bold">$1</strong>')
-                .replace(/\*(.*?)\*/g, '<em class="text-emerald-300/90">$1</em>')
-                .replace(/`(.*?)`/g, '<code class="bg-black/50 text-emerald-400 px-1.5 py-0.5 rounded text-sm font-mono border border-white/10">$1</code>');
-
-              return <p key={idx} className="mb-6" dangerouslySetInnerHTML={{ __html: htmlContent }} />;
-            })}
+            {post.content.split(/\n\n+/).map((block, idx) => renderMarkdownBlock(block, idx))}
           </div>
         </div>
       );
