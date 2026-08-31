@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Redirect to the home page with the correct base path
+    const path = window.location.pathname;
+    const base = '/Portfolio_Website';
+    if (path.startsWith(base)) {
+      window.location.href = path;
+    } else {
+      window.location.href = base + path;
+    }
+  </script>
+</head>
+<body>
+  <h1>Redirecting...</h1>
+  <p>If you are not redirected automatically, <a href="/Portfolio_Website/">click here</a>.</p>
+</body>
+</html>
