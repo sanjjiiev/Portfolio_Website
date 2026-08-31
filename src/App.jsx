@@ -91,16 +91,19 @@ const HomePage = () => {
 
   const projects = [
     { name: "BlockDrive", link: "https://github.com/sanjjiiev/secure-storage", desc: "Highly scalable, zero-knowledge decentralized file storage platform utilizing AES-128 encryption and a custom PoW blockchain.", type: "Dist. Systems" },
-    { name: "VideoDash 2.0", link: "https://github.com/sanjjiiev/video_dash_2.0", desc: "Enterprise ABR video streaming utilizing HLS, secure FFmpeg containerized transcoding, and AES-128 chunk encryption.", type: "Web/Media" },
+    { name: "VideoDash", link: "https://github.com/sanjjiiev/video_dash_2.0", desc: "Enterprise ABR video streaming utilizing HLS, secure FFmpeg containerized transcoding, and AES-128 chunk encryption.", type: "Web/Media" },
     { name: "mofscreen", link: "https://github.com/sanjjiiev/mofscreen", desc: "Sophisticated screen recording and real-time interaction platform for Linux systems with optimized memory management.", type: "Systems" },
-    { name: "Network+ Scanner", link: "https://github.com/sanjjiiev/NetworkPlus", desc: "Automated network vulnerability scanner performing port scanning and service detection with custom Nmap scripting.", type: "Security" }
+    { name: "DarkMoney-Tracker", link: "https://github.com/sanjjiiev/DarkMoney-Tracker", desc: "A decentralized cryptocurrency tracking tool designed to monitor and analyze dark market transactions.", type: "Security" },
+    {name: "Knowa", link: "https://github.com/sanjjiiev/Knowva", desc:"a personalized Learning Management System designed to provide a personalized, interactive, and efficient learning experience.", type:"Web/AI"},
+    {name: "GlassBox" , link:"https://github.com/sanjjiiev/sprintfour", desc: "Glassbox is a full-stack document anonymization tool that redacts PII from text, PDF, and DOCX files, and explains every decision", type:"Web/AI"},
+
   ];
 
   const awards = [
-    { title: "Smart India Hackathon 2025", year: "2025", desc: "Advanced to final round with blockchain-based digital voting system prototype." },
-    { title: "Amrita IoT Challenge", year: "2024", desc: "Designed a smart agriculture monitoring system using LoRa and edge computing." },
-    { title: "ACM Code Sprint", year: "2024", desc: "Won first place for optimizing distributed sorting algorithms in C++." },
-    { title: "Open Source Contributor", year: "2023-2026", desc: "Contributed to multiple open-source projects including FFmpeg and TensorFlow." }
+    { title: "Smart India Hackathon 2025", year: "2025", desc: "Advanced to pre-final round with secure erase project." },
+    { title: "Tensor Club LLM Performance Prediction", year: "2025", desc: "3rd Place. Optimized AI models for predicting large language model performance." },
+    { title: "Bootstrap 25 Defang.io Hackathon", year: "2024", desc: "3rd Place. Developed a scalable AI-powered Personalized Learning Management System." },
+    { title: "Uyir Hackathon Finalist", year: "2023", desc: "Engineered an AI-powered SOS system for autonomous vehicles." }
   ];
 
   return (
