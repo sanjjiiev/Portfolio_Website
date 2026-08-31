@@ -114,7 +114,7 @@ This approach offers several advantages:
 - **Smooth transitions**: Better user experience with animations and transitions
 - **Reduced server load**: Fewer round-trips and smaller data transfers
 
-The magic happens through React Router's **`<BrowserRouter>`** component. It syncs the UI with the URL, maintaining a single source of truth for the application's location.
+The magic happens through React Router's **\`<BrowserRouter>\`** component. It syncs the UI with the URL, maintaining a single source of truth for the application's location.
 
 ---
 
